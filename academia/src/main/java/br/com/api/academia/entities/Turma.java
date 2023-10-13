@@ -17,7 +17,7 @@ public class Turma {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private Integer id;
+	private Integer idTurma;
 	
 	@Column(name = "nome_disciplina")
 	private Integer nomeDisciplina;
@@ -32,12 +32,12 @@ public class Turma {
 	
 	
 
-	public Integer getId() {
-		return id;
+	public Integer getIdTurma() {
+		return idTurma;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdTurma(Integer idTurma) {
+		this.idTurma = idTurma;
 	}
 
 	public Integer getNomeDisciplina() {

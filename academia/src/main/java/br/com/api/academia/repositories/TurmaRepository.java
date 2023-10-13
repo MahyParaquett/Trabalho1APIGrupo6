@@ -1,4 +1,4 @@
-package br.com.api.academia.Repositories;
+package br.com.api.academia.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

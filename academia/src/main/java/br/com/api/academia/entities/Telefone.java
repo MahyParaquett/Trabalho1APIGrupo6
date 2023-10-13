@@ -18,7 +18,7 @@ public class Telefone {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	public Integer id;
+	public Integer idTelefone;
 	
 	@OneToOne
 	@JoinColumn(name = "idinstrutor", referencedColumnName = "idinstrutor")
@@ -27,12 +27,12 @@ public class Telefone {
 	@Column(name = "numero")
 	public Long numero;
 
-	public Integer getId() {
-		return id;
+	public Integer getIdTelefone() {
+		return idTelefone;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdTelefone(Integer idTelefone) {
+		this.idTelefone = idTelefone;
 	}
 
 

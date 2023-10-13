@@ -1,5 +1,8 @@
 package br.com.api.academia.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,28 +12,26 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idTurma", scope = Turma.class)
+
 @Entity
-@Table(name = "turma" )
+@Table(name = "turma")
 public class Turma {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "idturma")
 	private Integer idTurma;
-	
+
 	@Column(name = "nome_disciplina")
-	private Integer nomeDisciplina;
-	
+	private String nomeDisciplina;
+
 	@Column(name = "dia_semana")
 	private String diaSemana;
-	
-	
+
 	@ManyToOne
-	@JoinColumn(name = "idinstrutor",referencedColumnName = "idinstrutor")
+	@JoinColumn(name = "idinstrutor", referencedColumnName = "idinstrutor")
 	private Instrutor instrutor;
-	
-	
 
 	public Integer getIdTurma() {
 		return idTurma;
@@ -40,11 +41,11 @@ public class Turma {
 		this.idTurma = idTurma;
 	}
 
-	public Integer getNomeDisciplina() {
+	public String getNomeDisciplina() {
 		return nomeDisciplina;
 	}
 
-	public void setNomeDisciplina(Integer nomeDisciplina) {
+	public void setNomeDisciplina(String nomeDisciplina) {
 		this.nomeDisciplina = nomeDisciplina;
 	}
 
@@ -64,6 +65,4 @@ public class Turma {
 		this.instrutor = instrutor;
 	}
 
-	
-	
 }

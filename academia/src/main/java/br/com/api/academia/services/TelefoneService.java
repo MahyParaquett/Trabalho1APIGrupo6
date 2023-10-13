@@ -13,7 +13,7 @@ public class TelefoneService {
 
 	@Autowired
 	TelefoneRepository telefoneRepo;
-	
+
 	public List<Telefone> listarTelefonees() {
 		return telefoneRepo.findAll();
 	}
@@ -25,28 +25,26 @@ public class TelefoneService {
 	public Telefone salvarTelefone(Telefone telefone) {
 		return telefoneRepo.save(telefone);
 	}
-	
+
 	public Telefone atualizarTelefone(Telefone telefone) {
 		return telefoneRepo.save(telefone);
 	}
 
-			public Boolean deletarTelefone(Telefone telefone) {
-			if(telefone == null)
+	public Boolean deletarTelefone(Telefone telefone) {
+		if (telefone == null)
 			return false;
-				
-				Telefone telefoneExistente = buscarTelefonePorId(telefone.getIdTelefone());
-			if(telefoneExistente == null)
-				return false;
-				
-					telefoneRepo.delete(telefone);
-		
-					Telefone telefoneContinuaExistindo = buscarTelefonePorId(telefone.getIdTelefone());
-					
-					if(telefoneContinuaExistindo == null)
-		return true;
-					return false;
-		}
 
+		Telefone telefoneExistente = buscarTelefonePorId(telefone.getIdTelefone());
+		if (telefoneExistente == null)
+			return false;
 
+		telefoneRepo.delete(telefone);
+
+		Telefone telefoneContinuaExistindo = buscarTelefonePorId(telefone.getIdTelefone());
+
+		if (telefoneContinuaExistindo == null)
+			return true;
+		return false;
+	}
 
 }

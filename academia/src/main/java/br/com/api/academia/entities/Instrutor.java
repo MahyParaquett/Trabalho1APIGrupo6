@@ -2,7 +2,9 @@ package br.com.api.academia.entities;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,27 +14,27 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idInstrutor", scope = Instrutor.class)
+
 @Entity
-@Table(name = "instrutor" )
+@Table(name = "instrutor")
 public class Instrutor {
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idinstrutor")
 	private Integer idInstrutor;
-	
+
 	@Column(name = "rg")
 	private Long rg;
-	
+
 	@Column(name = "nome")
 	private String nome;
-	
-	
+
 	@OneToMany(mappedBy = "instrutor")
-    private List<Turma>turmas;
-	
-	@OneToOne(mappedBy = "instrutor", cascade = CascadeType.ALL)
+	private List<Turma> turmas;
+
+	@OneToOne(mappedBy = "instrutor")
 	private Telefone telefone;
 
 	public Telefone getTelefone() {
@@ -55,7 +57,6 @@ public class Instrutor {
 		this.rg = rg;
 	}
 
-	
 	public Integer getIdInstrutor() {
 		return idInstrutor;
 	}
@@ -64,12 +65,8 @@ public class Instrutor {
 		this.idInstrutor = idInstrutor;
 	}
 
-	public long getRg() {
+	public Long getRg() {
 		return rg;
-	}
-
-	public void setRg(long rg) {
-		this.rg = rg;
 	}
 
 	public String getNome() {
@@ -79,7 +76,5 @@ public class Instrutor {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
 
 }
